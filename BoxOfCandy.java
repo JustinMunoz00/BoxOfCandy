@@ -11,9 +11,9 @@ public class BoxOfCandy
     */
     public boolean moveCandyToFirstRow(int col)
     {
-        if (box[0][col] != null) return true;
+        if (box[0][col].getFlavor() != "") return true;
         for (int i = 1; i < box.length; i++){
-            if (box[i][col] != null){
+            if (box[i][col].getFlavor() != ""){
                 box[0][col] = box[i][col];
                 box[i][col] = null;
                 return true;
@@ -28,11 +28,14 @@ public class BoxOfCandy
     */
     public Candy removeNextByFlavor(String flavor)
     {
+        Candy re = new Candy();
         for (int r = 0; r < box.length; r++){
             for (int c = 0; c < box[0].length; c++){
-                if (box[r][c].getFlavor() == flavor) new Candy() re = box[r][c];
-                box[r][c] = null;
-                return re;
+                if (box[r][c].getFlavor() == flavor) {
+                    re = box[r][c];
+                    box[r][c] = null;
+                    return re;
+                }
             }
         }
         return null;
@@ -44,6 +47,6 @@ public class BoxOfCandy
     }
     
     public Candy[][] candies(){
-        returns box;
+        return box;
     }
 }

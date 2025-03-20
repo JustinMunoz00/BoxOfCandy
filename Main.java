@@ -5,8 +5,14 @@ public class Main{
         Candy three = new Candy("cherry");
         Candy four = new Candy("lemon");
         Candy five = new Candy("grape");
-        BoxOfCandy box1 = new BoxOfCandy(new Candy[][]{{null, one, null}, {null, two, null}, {null, null, three}, {null, four, five}});
-        System.out.println(box.moveCandyToFirstRow(0));
-        System.out.println(box1.candies());
+        Candy six = new Candy();
+        Candy[][] candies1 = {{six, one, six}, {six, two, six}, {six, six, three}, {six, four, five}};
+        BoxOfCandy box1 = new BoxOfCandy(candies1);
+        System.out.println(box1.moveCandyToFirstRow(0));
+        Candy[][] c = box1.candies();
+        for (int i = 0; i < c.length; i++) {
+            for (int x = 0; x < c[0].length; x++) System.out.print(c[i][x].getFlavor());
+            System.out.println();
+        }
     }
 }
